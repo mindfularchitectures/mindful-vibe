@@ -1,5 +1,10 @@
 /* Custom styles for the GenAI Architecture Patterns site */
 
+/* Set page background color */
+body {
+  background-color: #f1efe7;
+}
+
 /* Add a subtle background to code blocks */
 .markdown pre {
   background-color: rgba(0, 0, 0, 0.02);
