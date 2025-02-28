@@ -1,6 +1,6 @@
 baseURL = "http://makiato.github.io/mindful-vibe/"
 languageCode = "en-us"
-title = "Smart Architectures"
+title = "Smart Architectures v2"
 theme = "hugo-book"
 
 # Book theme settings
