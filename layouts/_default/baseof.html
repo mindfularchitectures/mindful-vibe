@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+</head>
+
+<body>
+  {{ partial "warning" . }}
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      {{ template "menu" . }}
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        {{ template "header" . }}
+        {{ partial "docs/inject/header" . }}
+      </header>
+
+      {{ partial "docs/inject/content-before" . }}
+      {{ template "main" . }}
+      {{ partial "docs/inject/content-after" . }}
+
+      <footer class="book-footer">
+        {{ partial "docs/inject/footer" . }}
+      </footer>
+
+      {{ template "comments" . }}
+    </div>
+
+    {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+    <aside class="book-toc">
+      {{ template "toc" . }}
+    </aside>
+    {{ end }}
+  </main>
+
+  {{ partial "docs/inject/body" . }}
+</body>
+
+</html>
+
+{{ define "menu" }}
+  {{ partial "docs/menu" . }}
+{{ end }}
+
+{{ define "header" }}
+  {{ partial "docs/header" . }}
+{{ end }}
+
+{{ define "main" }}
+  {{ partial "docs/inject/content-before" . }}
+  
+  <article class="markdown">
+    {{- .Content -}}
+  </article>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/toc" . }}
+{{ end }}
+
+{{ define "comments" }}
+  {{ partial "docs/comments" . }}
+{{ end }}
